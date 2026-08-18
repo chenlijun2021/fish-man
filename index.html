@@ -1,0 +1,1223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Fish Walker</title>
+<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
+</head>
+<body>
+<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Fish Walker" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
+&lt;title&gt;Fish Walker&lt;/title&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 14px);
+  --blue: light-dark(rgb(51 156 255), rgb(51 156 255));
+  --orange: light-dark(rgb(226 85 7), rgb(251 106 34));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --red: light-dark(rgb(224 46 42), rgb(255 103 100));
+  --purple: light-dark(rgb(146 79 247), rgb(173 123 249));
+  --yellow: light-dark(rgb(255 195 0), rgb(255 210 64));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --radius: var(--border-radius-lg, 12.5px);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+
+  margin: 0;
+  padding: 5px;
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium, 500);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive &gt; .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align=&quot;right&quot;]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align=&quot;center&quot;]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: superellipse(1.5);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: superellipse(1.5);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+    [aria-pressed=&quot;true&quot;],
+    [aria-selected=&quot;true&quot;],
+    .is-selected
+  ) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+/* Model-authored chart rules can otherwise stretch icons after these styles load. */
+svg.lucide {
+  display: block;
+  width: 16px !important;
+  height: 16px !important;
+  flex: none;
+  margin: 0 !important;
+  stroke-width: 1.6;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fish-walker-viz&quot;&gt;
+  &lt;style&gt;
+    #fish-walker-viz{position:relative;min-height:580px;overflow:hidden;background:#10141b;color:#f6f2e9;font:12px/1.25 system-ui,sans-serif}
+    #fish-walker-viz canvas{display:block;width:100%;height:580px;background:#10141b}
+    #fish-walker-viz .panel{position:absolute;top:14px;left:14px;width:218px;max-height:calc(580px - 52px);padding:13px 12px 15px;background:linear-gradient(145deg,rgba(25,30,43,.82),rgba(9,11,18,.68));border:1px solid rgba(255,255,255,.16);border-radius:18px;box-shadow:0 18px 46px rgba(0,0,0,.22);backdrop-filter:blur(14px);transition:width .36s cubic-bezier(.2,.8,.2,1),height .36s cubic-bezier(.2,.8,.2,1),padding .36s;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.35) transparent}
+    #fish-walker-viz .panel::-webkit-scrollbar{width:5px}#fish-walker-viz .panel::-webkit-scrollbar-thumb{background:rgba(255,255,255,.3);border-radius:6px}
+    #fish-walker-viz .panel.collapsed{width:30px;height:30px;min-height:0;padding:5px;overflow:hidden;border-radius:50%}
+    #fish-walker-viz .panel.collapsed&gt;*:not(.toggle){opacity:0;pointer-events:none}
+    #fish-walker-viz .toggle{position:absolute;top:7px;right:7px;width:26px;height:24px;border:0;background:transparent;color:#f6f2e9;font-size:18px;line-height:20px;cursor:pointer;padding:0}
+    #fish-walker-viz h2{margin:2px 0 12px;font-size:14px;letter-spacing:.16em;font-weight:600}
+    #fish-walker-viz label{display:block;margin:8px 2px 2px;color:#eee7dc}
+    #fish-walker-viz input[type=range]{width:100%;accent-color:#d7bd8a}
+    #fish-walker-viz input[type=color]{width:100%;height:24px;border:0;background:transparent;padding:0}
+    #fish-walker-viz .caption{position:absolute;right:16px;bottom:14px;color:rgba(255,255,255,.63);letter-spacing:.05em}
+  &lt;/style&gt;
+  &lt;canvas aria-label=&quot;A school of fish continuously forming a walking figure&quot;&gt;&lt;/canvas&gt;
+  &lt;div class=&quot;panel&quot;&gt;
+    &lt;button class=&quot;toggle&quot; type=&quot;button&quot; aria-label=&quot;收起控制面板&quot; aria-expanded=&quot;true&quot;&gt;☰&lt;/button&gt;
+    &lt;h2&gt;FISH WALKER&lt;/h2&gt;
+    &lt;label&gt;鱼数量 &lt;span data-v=&quot;count&quot;&gt;&lt;/span&gt;&lt;/label&gt;&lt;input id=&quot;count&quot; type=&quot;range&quot; min=&quot;120&quot; max=&quot;1200&quot; value=&quot;620&quot; step=&quot;10&quot;&gt;
+    &lt;label&gt;鱼大小 &lt;span data-v=&quot;size&quot;&gt;&lt;/span&gt;&lt;/label&gt;&lt;input id=&quot;size&quot; type=&quot;range&quot; min=&quot;3&quot; max=&quot;20&quot; value=&quot;8&quot; step=&quot;.5&quot;&gt;
+    &lt;label&gt;游动速度 &lt;span data-v=&quot;swim&quot;&gt;&lt;/span&gt;&lt;/label&gt;&lt;input id=&quot;swim&quot; type=&quot;range&quot; min=&quot;.2&quot; max=&quot;2.5&quot; value=&quot;1&quot; step=&quot;.05&quot;&gt;
+    &lt;label&gt;行走速度 &lt;span data-v=&quot;walk&quot;&gt;&lt;/span&gt;&lt;/label&gt;&lt;input id=&quot;walk&quot; type=&quot;range&quot; min=&quot;.1&quot; max=&quot;2.5&quot; value=&quot;.75&quot; step=&quot;.05&quot;&gt;
+    &lt;label&gt;聚合程度 &lt;span data-v=&quot;aggregate&quot;&gt;&lt;/span&gt;&lt;/label&gt;&lt;input id=&quot;aggregate&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;1&quot; value=&quot;.82&quot; step=&quot;.01&quot;&gt;
+    &lt;label&gt;3D 深度 &lt;span data-v=&quot;depth&quot;&gt;&lt;/span&gt;&lt;/label&gt;&lt;input id=&quot;depth&quot; type=&quot;range&quot; min=&quot;15&quot; max=&quot;180&quot; value=&quot;95&quot; step=&quot;1&quot;&gt;
+    &lt;label&gt;自由噪声 &lt;span data-v=&quot;noise&quot;&gt;&lt;/span&gt;&lt;/label&gt;&lt;input id=&quot;noise&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;2.5&quot; value=&quot;.8&quot; step=&quot;.05&quot;&gt;
+    &lt;label&gt;水流扰动 &lt;span data-v=&quot;gust&quot;&gt;&lt;/span&gt;&lt;/label&gt;&lt;input id=&quot;gust&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;2.5&quot; value=&quot;1.1&quot; step=&quot;.05&quot;&gt;
+    &lt;label&gt;散开持续时间 &lt;span data-v=&quot;scatterTime&quot;&gt;&lt;/span&gt;&lt;/label&gt;&lt;input id=&quot;scatterTime&quot; type=&quot;range&quot; min=&quot;1&quot; max=&quot;15&quot; value=&quot;5&quot; step=&quot;.5&quot;&gt;
+    &lt;label&gt;残影 &lt;span data-v=&quot;trail&quot;&gt;&lt;/span&gt;&lt;/label&gt;&lt;input id=&quot;trail&quot; type=&quot;range&quot; min=&quot;4&quot; max=&quot;100&quot; value=&quot;38&quot; step=&quot;1&quot;&gt;
+    &lt;label&gt;鱼透明度 &lt;span data-v=&quot;opacity&quot;&gt;&lt;/span&gt;&lt;/label&gt;&lt;input id=&quot;opacity&quot; type=&quot;range&quot; min=&quot;20&quot; max=&quot;255&quot; value=&quot;155&quot; step=&quot;1&quot;&gt;
+    &lt;label&gt;背景渐变：起始&lt;/label&gt;&lt;input id=&quot;bgA&quot; type=&quot;color&quot; value=&quot;#10141b&quot;&gt;
+    &lt;label&gt;背景渐变：终止&lt;/label&gt;&lt;input id=&quot;bgB&quot; type=&quot;color&quot; value=&quot;#283047&quot;&gt;
+    &lt;label&gt;上传背景图片&lt;/label&gt;&lt;input id=&quot;bgUpload&quot; type=&quot;file&quot; accept=&quot;image/*&quot;&gt;
+    &lt;label&gt;鱼颜色 1&lt;/label&gt;&lt;input id=&quot;fish1&quot; type=&quot;color&quot; value=&quot;#ffffff&quot;&gt;
+    &lt;label&gt;鱼颜色 2&lt;/label&gt;&lt;input id=&quot;fish2&quot; type=&quot;color&quot; value=&quot;#ffffff&quot;&gt;
+    &lt;label&gt;鱼颜色 3&lt;/label&gt;&lt;input id=&quot;fish3&quot; type=&quot;color&quot; value=&quot;#ffffff&quot;&gt;
+    &lt;label&gt;鱼颜色 4&lt;/label&gt;&lt;input id=&quot;fish4&quot; type=&quot;color&quot; value=&quot;#ffffff&quot;&gt;
+    &lt;label&gt;鱼颜色 5&lt;/label&gt;&lt;input id=&quot;fish5&quot; type=&quot;color&quot; value=&quot;#ffffff&quot;&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;caption&quot;&gt;fish form · scatter · run&lt;/div&gt;
+  &lt;script&gt;
+  (() =&gt; {
+    const root=document.getElementById(&#x27;fish-walker-viz&#x27;), canvas=root.querySelector(&#x27;canvas&#x27;), ctx=canvas.getContext(&#x27;2d&#x27;);
+    const ids=[&#x27;count&#x27;,&#x27;size&#x27;,&#x27;swim&#x27;,&#x27;walk&#x27;,&#x27;aggregate&#x27;,&#x27;depth&#x27;,&#x27;noise&#x27;,&#x27;gust&#x27;,&#x27;scatterTime&#x27;,&#x27;trail&#x27;,&#x27;opacity&#x27;,&#x27;bgA&#x27;,&#x27;bgB&#x27;,&#x27;bgUpload&#x27;,&#x27;fish1&#x27;,&#x27;fish2&#x27;,&#x27;fish3&#x27;,&#x27;fish4&#x27;,&#x27;fish5&#x27;];
+    const el=Object.fromEntries(ids.map(id=&gt;[id,root.querySelector(&#x27;#&#x27;+id)]));
+    const val=id=&gt;+el[id].value;
+    let fish=[], W=0,H=0,last=performance.now(), time=0, scatterUntil=0, bgImage=null;
+    const hexRgb=h=&gt;[parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];
+    const V=(x=0,y=0,z=0)=&gt;({x,y,z});
+    const add=(a,b)=&gt;V(a.x+b.x,a.y+b.y,a.z+b.z), sub=(a,b)=&gt;V(a.x-b.x,a.y-b.y,a.z-b.z), mul=(a,n)=&gt;V(a.x*n,a.y*n,a.z*n);
+    const mag=a=&gt;Math.hypot(a.x,a.y,a.z), norm=a=&gt;{const m=mag(a)||1;return mul(a,1/m)};
+    const cross=(a,b)=&gt;norm(V(a.y*b.z-a.z*b.y,a.z*b.x-a.x*b.z,a.x*b.y-a.y*b.x));
+    const lerp=(a,b,t)=&gt;add(a,mul(sub(b,a),t));
+    const noise=(x,y,z)=&gt;Math.sin(x*1.7+y*2.3+z*.7)*.5+Math.sin(x*.63-y*1.1+z*1.8)*.5;
+    function buildFish(){fish=Array.from({length:val(&#x27;count&#x27;)},(_,i)=&gt;({
+      p:V((Math.random()-.5)*500,(Math.random()-.5)*500,(Math.random()-.5)*280),v:V((Math.random()-.5)*2,(Math.random()-.5)*2,(Math.random()-.5)*2),
+      part:Math.floor(Math.random()*12),u:Math.random(),angle:Math.random()*Math.PI*2,rad:Math.sqrt(Math.random()),phase:Math.random()*Math.PI*2,turn:.6+Math.random()*.9,size:.7+Math.random()*.7,i,
+      gust:V(),gustUntil:0,nextGust:1.5+Math.random()*5,tone:Math.floor(Math.random()*5),heading:Math.random()*Math.PI*2,uVelocity:(Math.random()&gt;.5?1:-1)*(.07+Math.random()*.11)
+    }));}
+    function pose(t){const phase=t*3.35,lf=Math.sin(phase),rf=-lf,flight=Math.max(0,Math.cos(phase*2))*8,d=Math.sin(t*.15)*28,Z=val(&#x27;depth&#x27;)/100,Q=(x,y,z=0)=&gt;V(x,y,z*Z),leg=(side,forward)=&gt;({hip:Q(d+side*15,60-flight,side*5),knee:Q(d+side*13+forward*34,126-flight-Math.max(0,forward)*17,side*10),foot:Q(d+side*15+forward*82,205-flight-Math.max(0,forward)*47,side*16)}),L=leg(-1,lf),R=leg(1,rf);return {
+      hip:Q(d,60-flight),chest:Q(d+18,-30-flight*.3,-2),neck:Q(d+27,-60-flight*.2,-2),head:Q(d+37,-94-flight*.1,1),
+      sl:Q(d-10,-42-flight*.3,-6),sr:Q(d+46,-42-flight*.3,5),hl:L.hip,hr:R.hip,
+      el:Q(d-21-lf*39,2-lf*24-flight,-12),er:Q(d+58+lf*39,2+lf*24-flight,12),al:Q(d-30-lf*72,58-lf*48-flight,-16),ar:Q(d+69+lf*72,58+lf*48-flight,16),
+      kl:L.knee,kr:R.knee,fl:L.foot,fr:R.foot};}
+    function parts(q){return [[q.hip,q.chest,32],[q.chest,q.neck,25],[q.neck,q.head,24],[q.head,q.head,31],[q.sl,q.el,13],[q.el,q.al,11],[q.sr,q.er,13],[q.er,q.ar,11],[q.hl,q.kl,17],[q.kl,q.fl,14],[q.hr,q.kr,17],[q.kr,q.fr,14]];}
+    function target(f,ps){const [a,b,r]=ps[f.part%ps.length];let axis=norm(sub(b,a));if(mag(sub(a,b))&lt;.01)axis=V(0,1,0);const ref=Math.abs(axis.y)&lt;.86?V(0,1,0):V(1,0,0),aa=cross(axis,ref),bb=cross(axis,aa),u=f.u,c=lerp(a,b,u),ang=f.angle+time*.32*f.turn,breath=.84+Math.sin(time*.72+f.phase*.1)*.16,rr=r*f.rad*breath;return add(c,add(mul(aa,Math.cos(ang)*rr),mul(bb,Math.sin(ang)*rr)));}
+    function project(p){const camera=760,s=camera/Math.max(180,camera-p.z);return{x:W*.5+p.x*s,y:H*.5+(p.y-25)*s,s};}
+    function angleMix(a,b,t){return a+Math.atan2(Math.sin(b-a),Math.cos(b-a))*t;}
+    function tick(now){const dt=Math.min(.035,(now-last)/1000);last=now;time+=dt*val(&#x27;walk&#x27;);const alpha=val(&#x27;trail&#x27;)/100,grad=ctx.createLinearGradient(0,0,W,H);grad.addColorStop(0,el.bgA.value);grad.addColorStop(1,el.bgB.value);ctx.globalAlpha=alpha;if(bgImage){ctx.drawImage(bgImage,0,0,W,H);ctx.globalAlpha=alpha*.28;ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);}else{ctx.fillStyle=grad;ctx.fillRect(0,0,W,H);}ctx.globalAlpha=1;
+      const ps=parts(pose(time)),scattering=time&lt;scatterUntil,ag=val(&#x27;aggregate&#x27;),form=scattering?ag*.08:ag,n=val(&#x27;noise&#x27;),sw=val(&#x27;swim&#x27;),shared=-.32+Math.sin(time*.24)*.06,headingLock=scattering?.12:Math.min(.97,.32+Math.pow(ag,.3)*.66);
+      fish.forEach(f=&gt;{f.u+=f.uVelocity*dt*(.75+sw*.55);if(f.u&lt;.04||f.u&gt;.96){f.u=Math.max(.04,Math.min(.96,f.u));f.uVelocity*=-1;}const to=sub(target(f,ps),f.p),d=mag(to),pull=mul(norm(to),Math.min(d*.016,2.2)*(.15+form*1.72));f.v=add(f.v,pull);const cur=V(noise(f.i*.17,time*.17,0),noise(f.i*.19+50,time*.17,1),noise(f.i*.13+100,time*.17,2));f.v=add(f.v,mul(cur,n*(1-form)*.75));const pers=V(Math.sin(time*f.turn+f.phase),Math.cos(time*f.turn*.74+f.phase),Math.sin(time*f.turn*.51+f.phase*2));f.v=add(mul(f.v,.935),mul(pers,(1-form)*.65));
+        if(time&gt;f.nextGust){const a=Math.random()*Math.PI*2,elev=(Math.random()-.5)*.7;f.gust=V(Math.cos(a),Math.sin(a),elev);f.gustUntil=time+.3+Math.random()*1.35;f.nextGust=time+2.5+Math.random()*7.5;}
+        if(time&lt;f.gustUntil){const fade=Math.min(1,(f.gustUntil-time)*3);f.v=add(f.v,mul(f.gust,val(&#x27;gust&#x27;)*(1-form*.42)*fade));}
+        const m=mag(f.v),max=.75+sw*2.6+(time&lt;f.gustUntil?val(&#x27;gust&#x27;)*2:0);if(m&gt;max)f.v=mul(f.v,max/m);const natural=Math.atan2(f.v.y,f.v.x),desired=angleMix(natural,shared,headingLock);f.heading=angleMix(f.heading,desired,Math.min(1,dt*(scattering?.72:1.18)));const propulsion=V(Math.cos(f.heading),Math.sin(f.heading),0);f.v=add(f.v,mul(propulsion,dt*(.52+sw*.38)));f.p=add(f.p,mul(f.v,dt*60));if(Math.random()&lt;.0018*(1.2-ag)){f.part=Math.floor(Math.random()*ps.length);f.u=Math.random();f.angle=Math.random()*Math.PI*2;}});
+      const palette=[&#x27;fish1&#x27;,&#x27;fish2&#x27;,&#x27;fish3&#x27;,&#x27;fish4&#x27;,&#x27;fish5&#x27;].map(id=&gt;hexRgb(el[id].value));fish.slice().sort((a,b)=&gt;a.p.z-b.p.z).forEach(f=&gt;{const a=project(f.p),z=val(&#x27;size&#x27;)*f.size*a.s,wave=now*.001*(3.1+sw*4.5)+f.phase,o=val(&#x27;opacity&#x27;)*Math.max(.48,Math.min(.92,.72+f.p.z/1200)),[r,g,b]=palette[f.tone],spine=[{x:z*.92,y:0,r:z*.14},{x:z*.54,y:Math.sin(wave)*z*.035,r:z*.33},{x:z*.14,y:Math.sin(wave-.48)*z*.11,r:z*.38},{x:-z*.29,y:Math.sin(wave-.98)*z*.20,r:z*.31},{x:-z*.68,y:Math.sin(wave-1.48)*z*.29,r:z*.19},{x:-z*1.03,y:Math.sin(wave-1.98)*z*.36,r:z*.06}];const sides=spine.map((p,i)=&gt;{const before=spine[Math.max(0,i-1)],after=spine[Math.min(spine.length-1,i+1)],d=Math.hypot(after.x-before.x,after.y-before.y)||1;return{x:-((after.y-before.y)/d)*p.r,y:((after.x-before.x)/d)*p.r};});ctx.save();ctx.translate(a.x,a.y);ctx.rotate(f.heading);ctx.fillStyle=`rgba(${r},${g},${b},${o/255})`;ctx.beginPath();ctx.moveTo(spine[0].x+sides[0].x,spine[0].y+sides[0].y);for(let i=1;i&lt;spine.length;i++)ctx.lineTo(spine[i].x+sides[i].x,spine[i].y+sides[i].y);for(let i=spine.length-1;i&gt;=0;i--)ctx.lineTo(spine[i].x-sides[i].x,spine[i].y-sides[i].y);ctx.closePath();ctx.fill();const tail=spine[5],tailSide=sides[5],fin=Math.sin(wave-2.45)*z*.19;ctx.beginPath();ctx.moveTo(tail.x+tailSide.x,tail.y+tailSide.y);ctx.quadraticCurveTo(tail.x-z*.5,tail.y-z*.49+fin,tail.x-z*.81,tail.y-z*.4+fin);ctx.quadraticCurveTo(tail.x-z*.46,tail.y,tail.x-z*.81,tail.y+z*.4-fin);ctx.quadraticCurveTo(tail.x-z*.5,tail.y+z*.49-fin,tail.x-tailSide.x,tail.y-tailSide.y);ctx.closePath();ctx.fill();ctx.strokeStyle=`rgba(18,22,28,${o*.14/255})`;ctx.lineWidth=Math.max(.45,z*.026);ctx.beginPath();ctx.moveTo(spine[0].x,spine[0].y);for(let i=1;i&lt;spine.length;i++)ctx.lineTo(spine[i].x,spine[i].y);ctx.stroke();ctx.fillStyle=`rgba(18,22,28,${o*.56/255})`;ctx.beginPath();ctx.arc(z*.73,-z*.095,Math.max(.8,z*.065),0,Math.PI*2);ctx.fill();ctx.restore();});
+      requestAnimationFrame(tick);
+    }
+    function resize(){const rect=root.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,2);W=rect.width;H=580;canvas.width=W*dpr;canvas.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);const g=ctx.createLinearGradient(0,0,W,H);g.addColorStop(0,el.bgA.value);g.addColorStop(1,el.bgB.value);ctx.fillStyle=g;ctx.fillRect(0,0,W,H);}
+    ids.forEach(id=&gt;el[id].addEventListener(&#x27;input&#x27;,()=&gt;{const out=root.querySelector(`[data-v=&quot;${id}&quot;]`);if(out)out.textContent=el[id].value;if(id===&#x27;count&#x27;)buildFish();}));
+    el.bgUpload.addEventListener(&#x27;change&#x27;,e=&gt;{const file=e.target.files&amp;&amp;e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=&gt;{bgImage=new Image();bgImage.src=reader.result;};reader.readAsDataURL(file);});
+    ids.forEach(id=&gt;{const out=root.querySelector(`[data-v=&quot;${id}&quot;]`);if(out)out.textContent=el[id].value;});
+    function scatter(){scatterUntil=time+val(&#x27;scatterTime&#x27;);fish.forEach(f=&gt;{const outward=norm(add(f.p,V((Math.random()-.5)*160,(Math.random()-.5)*160,(Math.random()-.5)*100)));f.v=add(f.v,mul(outward,4+val(&#x27;gust&#x27;)*4));f.gustUntil=time+val(&#x27;scatterTime&#x27;)*.6;f.gust=outward;});}
+    window.addEventListener(&#x27;keydown&#x27;,e=&gt;{if(e.code===&#x27;Space&#x27;&amp;&amp;!e.repeat){e.preventDefault();scatter();}});
+    const panel=root.querySelector(&#x27;.panel&#x27;),toggle=root.querySelector(&#x27;.toggle&#x27;);toggle.addEventListener(&#x27;click&#x27;,()=&gt;{const collapsed=panel.classList.toggle(&#x27;collapsed&#x27;);toggle.setAttribute(&#x27;aria-expanded&#x27;,String(!collapsed));toggle.setAttribute(&#x27;aria-label&#x27;,collapsed?&#x27;展开控制面板&#x27;:&#x27;收起控制面板&#x27;);});
+    new ResizeObserver(resize).observe(root);resize();buildFish();requestAnimationFrame(tick);
+  })();
+  &lt;/script&gt;
+&lt;/div&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handleLeave = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+</body>
+</html>
